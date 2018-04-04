@@ -1,0 +1,8 @@
+extends layout
+
+include mixinAddFact
+
+block content
+  .container
+    h4= title
+    +addFact(fact)

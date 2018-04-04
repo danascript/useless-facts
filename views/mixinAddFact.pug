@@ -1,0 +1,10 @@
+mixin addFact(fact = {})
+  form.form-inline(action=action method='POST')
+
+    //- label(for='title') Title
+    input.form-control(type='text' name='title' id='title' placeholder='Title' value=fact.title required)
+    
+    //- label(for='text') Text
+    input.form-control(type='text' name='text' id='text' placeholder='Text' value=fact.text required)
+
+    button.btn.btn-dark(type='submit') Submit

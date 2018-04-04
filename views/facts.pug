@@ -1,0 +1,34 @@
+extends layout
+
+include mixinAddFact
+
+block content
+  .container
+    h4= title
+    h5 But only useless facts.
+
+    h6.sub-title You can add one
+    +addFact()
+
+  .container.facts
+    h6.sub-title Or you can read the ones we have
+    ul.list-group
+      each fact in facts
+        a(href=`/facts/${fact.uuid}`)
+          li.list-group-item
+            .row
+              .col-8
+                h4= fact.title
+                p= fact.text
+              .col-4
+                input(type="radio" name="emojiVote3" id="emojiVote3_dissatisfied" value="dissatisfied")
+                label(for="emojiVote3_dissatisfied") Bad
+
+                input(type="radio" name="emojiVote3" id="emojiVote3_general" value="general")
+                label(for="emojiVote3_general") Fine
+                
+                input(type="radio" name="emojiVote3" id="emojiVote3_satisfied" value="satisfied")
+                label(for="emojiVote3_satisfied") Good
+                
+                input(type="radio" name="emojiVote3" id="emojiVote3_awesome" value="awesome" checked)
+                label(for="emojiVote3_awesome") Awesome

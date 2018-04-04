@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h4 One useless fact a day!
+  h5.title <strong>Title:</strong> #{fact.title}
+  p.text <strong>Text:</strong> #{fact.text}
+
+  a.btn.btn-dark(href=`/facts`) Show all
+  a.btn.btn-dark(href=`/facts/${fact.uuid}/edit`) Edit
+  a.btn.btn-dark(href=`/facts/${fact.uuid}/delete`) Delete
