@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 })
 
 router.get('/facts', catchErrors(factsController.showFacts))
+router.get('/facts/page/:page', catchErrors(factsController.showFacts))
 router.post('/facts', factsController.uuidCreator, catchErrors(factsController.saveFact))
 
 router.get('/facts/:uuid', catchErrors(factsController.showSingleFact))

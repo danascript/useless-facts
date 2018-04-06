@@ -46,3 +46,15 @@ li:hover {
 .text {
   margin-bottom: 2rem;
 }
+
+.pages {
+  justify-content: right;
+}
+
+.emojis {
+  text-align: right;
+}
+
+.emojis label {
+  padding: .5rem;
+}

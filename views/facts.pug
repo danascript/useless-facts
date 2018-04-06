@@ -20,15 +20,8 @@ block content
               .col-8
                 h4= fact.title
                 p= fact.text
-              .col-4
-                input(type="radio" name="emojiVote3" id="emojiVote3_dissatisfied" value="dissatisfied")
-                label(for="emojiVote3_dissatisfied") Bad
-
-                input(type="radio" name="emojiVote3" id="emojiVote3_general" value="general")
-                label(for="emojiVote3_general") Fine
-                
-                input(type="radio" name="emojiVote3" id="emojiVote3_satisfied" value="satisfied")
-                label(for="emojiVote3_satisfied") Good
-                
-                input(type="radio" name="emojiVote3" id="emojiVote3_awesome" value="awesome" checked)
-                label(for="emojiVote3_awesome") Awesome
+    if page > 1
+      a.btn.btn-dark.pages(href=`/facts/page/${page-1}`) Prev
+    if page < pages 
+      a.btn.btn-dark.pages(href=`/facts/page/${parseFloat(page) + 1}`) Next
+    p Page #{page} of #{pages} - #{count} total results

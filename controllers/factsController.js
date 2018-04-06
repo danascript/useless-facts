@@ -4,11 +4,25 @@ const uuid = require('uuid')
 
 exports.showFacts = async (req, res) => {
 
-  const facts = await Fact.find()
+  const page = req.params.page || 1;
+
+  const limit = 3;
+  const skip = (page * limit) - limit;
+
+  const factsPromise = await Fact.find().sort({ created: 'desc' }).skip(skip).limit(limit)
+  const countPromise = Fact.count()
+
+  const [facts, count] = await Promise.all([factsPromise, countPromise])
+  const pages = Math.ceil(count / limit)
+
+  // const facts = await Fact.find()
   res.render('facts', {
     title: 'Facts!',
     action: `/facts`,
-    facts
+    facts,
+    count,
+    page,
+    pages
   })
 }
 
@@ -25,6 +39,13 @@ exports.saveFact = async (req, res) => {
 
 exports.showSingleFact = async (req, res) => {
   const fact = await Fact.findOne({ uuid: req.params.uuid })
+
+  if (!fact) {
+    res.render('error404', {
+      title: '404'
+    })
+    return
+  }
 
   res.render('singleFact', {
     fact
